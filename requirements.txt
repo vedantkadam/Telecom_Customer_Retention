@@ -1,0 +1,13 @@
+# Versions the reported results were produced with (Python 3.13)
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.1
+scikit-survival==0.28.0
+lifelines==0.30.3
+xgboost==3.4.1
+shap==0.53.0
+matplotlib==3.11.2
+autograd
+# NOTE: lifelines declares autograd-gamma and pandas<3. autograd-gamma failed to build here and is only
+# used by lifelines' generalized-gamma fitter (not used in this project); see README "Environment".

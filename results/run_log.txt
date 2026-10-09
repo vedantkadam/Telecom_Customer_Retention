@@ -1,0 +1,38 @@
+[1/8] loading + audit
+[2/8] tuning + fitting models (CV on training data only)
+  CV cox: {0.01: 0.8628567322904518, 0.05: 0.8548450490795744, 0.1: 0.8485382211109062, 0.3: 0.8587079726004928} -> 0.01
+  CV aft: {0.001: 0.8618764721769948, 0.01: 0.8616087935326827, 0.1: 0.856229011896574} -> 0.001
+  CV rsf: {15: 0.8488227294591341, 40: 0.8473887013282534} -> 15
+  CV xgb depth: {2: 0.8287425318517542, 3: 0.8234659716531918, 4: 0.8183720965538965} -> 2
+  CV xgb+tenure depth: {2: 0.851183512396891, 3: 0.8480063249162438, 4: 0.8431982788959124} -> 2
+  selected survival model by CV C-index: Cox (elastic net, strat. contract)
+[3/8] test-set evaluation
+                                    c_index  auc_6m  auc_12m  ibs_1_59  brier_12m  roc_auc_flag  precision@0.5  recall@0.5  f1@0.5
+Cox (elastic net, strat. contract)    0.869   0.902    0.914     0.083      0.087           NaN            NaN         NaN     NaN
+Weibull AFT                           0.868   0.901    0.914     0.083      0.086           NaN            NaN         NaN     NaN
+Random survival forest                0.857   0.899    0.909     0.095      0.090           NaN            NaN         NaN     NaN
+Logistic regression                   0.825   0.827    0.855       NaN        NaN         0.819          0.601       0.497   0.544
+XGBoost                               0.826   0.830    0.857       NaN        NaN         0.818          0.601       0.504   0.548
+Logistic regression + tenure          0.875   0.883    0.917       NaN        NaN         0.833          0.636       0.533   0.580
+XGBoost + tenure                      0.894   0.930    0.936       NaN        NaN         0.838          0.641       0.526   0.578
+Tenure alone (leakage check)            NaN   1.000    1.000       NaN        NaN           NaN            NaN         NaN     NaN
+[4/8] profit analysis (+bootstrap)
+                            rule  max_profit_per_1000  best_share_contacted  profit_if_contact_all_per_1000  max_ci_lo  max_ci_hi  profit_at_G>0_per_1000  share_contacted_G>0
+0                         Random                 0.00                  0.00                       -12841.85       0.00      -0.00                     NaN                  NaN
+1                 Logistic prob.              1114.72                  0.11                       -12841.85     696.01    1705.21                     NaN                  NaN
+2                  XGBoost prob.              1062.09                  0.10                       -12841.85     610.26    1617.24                     NaN                  NaN
+3        Logistic + tenure prob.              2071.47                  0.14                       -12841.85    1555.88    2732.43                     NaN                  NaN
+4         XGBoost + tenure prob.              2632.50                  0.11                       -12841.85    2057.89    3243.48                     NaN                  NaN
+5          Survival risk (pi_12)              1312.61                  0.14                       -12841.85     911.38    1997.39                     NaN                  NaN
+6     Expected profit (paper, G)              1274.08                  0.12                       -12841.85     788.10    1866.48                  701.36                 0.20
+7  Expected profit (refined, G2)              1476.22                  0.10                       -12841.85    1028.64    2099.61                 1256.28                 0.14
+[5/8] sensitivity
+[6/8] SHAP
+[7/8] group check + customer scores
+[8/8] seed robustness
+  seed 1 done
+  seed 2 done
+  seed 3 done
+  seed 4 done
+  seed 5 done
+done

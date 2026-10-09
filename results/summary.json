@@ -1,0 +1,132 @@
+{
+  "audit": {
+    "rows": 7043,
+    "cols": 21,
+    "duplicates": 0,
+    "unique_ids": true,
+    "missing_total_charges": 11,
+    "missing_all_tenure0": true,
+    "rows_after_drop": 7032,
+    "corr_totalcharges_vs_tenure_x_monthly": 0.9995598572867933,
+    "corr_totalcharges_vs_tenure": 0.825880460933202,
+    "train_n": 4922,
+    "test_n": 2110,
+    "churned": 1869,
+    "churn_rate_pct": 26.6,
+    "tenure_min": 1,
+    "tenure_max": 72,
+    "tenure_median": 29.0,
+    "median_tenure_churned": 10.0,
+    "median_tenure_retained": 38.0,
+    "mean_monthly_churned": 74.44,
+    "mean_monthly_retained": 61.31,
+    "senior_pct": 16.2,
+    "churn_by_contract_pct": {
+      "Month-to-month": 42.7,
+      "One year": 11.3,
+      "Two year": 2.8
+    },
+    "customers_by_contract": {
+      "Month-to-month": 3875,
+      "Two year": 1685,
+      "One year": 1472
+    },
+    "customers_by_internet": {
+      "Fiber optic": 3096,
+      "DSL": 2416,
+      "No": 1520
+    },
+    "logrank_p": {
+      "Contract": 0.0,
+      "InternetService": 1.1408931448716352e-113,
+      "PaymentMethod": 3.0665292229500084e-187
+    },
+    "ph_violations_p<0.05": {
+      "unstratified": 3,
+      "stratified": 3,
+      "n_covariates": 23
+    },
+    "ph_contract_p": {
+      "Contract_OneYear": 0.00016171421865218339,
+      "Contract_TwoYear": 0.998448672761262
+    },
+    "selected_survival_model": "Cox (elastic net, strat. contract)"
+  },
+  "hyperparameters": {
+    "cox": 0.01,
+    "aft": 0.001,
+    "rsf": 15,
+    "xgb_depth": 2,
+    "xgb_t_depth": 2,
+    "cv_cindex": {
+      "cox": 0.8628567322904518,
+      "aft": 0.8618764721769948,
+      "rsf": 0.8488227294591341
+    }
+  },
+  "calibration": {
+    "cox": {
+      "mean_abs_error": 0.024157935697754616,
+      "max_abs_error": 0.13077786388732815
+    },
+    "xgb": {
+      "mean_abs_error": 0.10001111869300501,
+      "max_abs_error": 0.2252970402947968
+    },
+    "xgb_t": {
+      "mean_abs_error": 0.10712370927229169,
+      "max_abs_error": 0.26715535298322735
+    }
+  },
+  "shap_spearman": 0.6205533596837945,
+  "oracle_profit_per_1000": 4427.038237398613,
+  "alt_survival_models": {
+    "Cox (elastic net, strat. contract)": {
+      "refined_at_G2>0": 1256.2773598398687,
+      "paper_at_G>0": 701.3607187408537,
+      "survival_risk_max": 1312.6114730731074
+    },
+    "Weibull AFT": {
+      "refined_at_G2>0": 1522.2889733198667,
+      "paper_at_G>0": 671.61999323524,
+      "survival_risk_max": 1341.1636117479181
+    },
+    "Random survival forest": {
+      "refined_at_G2>0": 1228.865635673873,
+      "paper_at_G>0": 1085.629195006171,
+      "survival_risk_max": 1022.5015984996711
+    }
+  },
+  "seed_means": {
+    "cindex_survival": 0.8659423568072089,
+    "cindex_xgb": 0.8225749538314888,
+    "auc12_survival": 0.9046044365718474,
+    "auc12_xgb": 0.8424321898166696,
+    "max|Logistic prob.": 984.5001024495416,
+    "max|XGBoost prob.": 1055.7311552473348,
+    "max|Logistic + tenure prob.": 2022.4734146731098,
+    "max|XGBoost + tenure prob.": 2755.019332534977,
+    "max|Survival risk (pi_12)": 1454.4562806959934,
+    "max|Expected profit (paper, G)": 1200.603503170244,
+    "max|Expected profit (refined, G2)": 1417.2350550140047,
+    "refined_at_G2>0": 1239.7756182939477,
+    "paper_at_G>0": 755.8461751886302,
+    "share_G2>0": 0.14028436018957344
+  },
+  "seed_sds": {
+    "cindex_survival": 0.006522261341081691,
+    "cindex_xgb": 0.006931232723792511,
+    "auc12_survival": 0.009237034931783772,
+    "auc12_xgb": 0.010174553015713336,
+    "max|Logistic prob.": 117.37294514860075,
+    "max|XGBoost prob.": 115.24681117992685,
+    "max|Logistic + tenure prob.": 135.11751219521352,
+    "max|XGBoost + tenure prob.": 138.5444958304064,
+    "max|Survival risk (pi_12)": 193.2859773542568,
+    "max|Expected profit (paper, G)": 300.19274060665305,
+    "max|Expected profit (refined, G2)": 239.50299007746116,
+    "refined_at_G2>0": 310.7731983156999,
+    "paper_at_G>0": 300.2528371626011,
+    "share_G2>0": 0.006142882178585642
+  }
+}
